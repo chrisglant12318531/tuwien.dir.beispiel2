@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelPaws | 3D-Druckvorlagen für Haustiere</title>
+    <meta name="description" content="PixelPaws bietet hochwertige STL-Dateien für 3D-gedrucktes Haustierzubehör.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS: DESIGN & BARRIEREFREIHEIT --- */
+        
+        :root {
+            /* Farbpalette (WCAG AA Konform) */
+            --primary-color: #2C3E50; /* Dunkelblau (Text) */
+            --accent-color: #27AE60; /* Grün (Buttons/Links) */
+            --bg-color: #FDFDFD; /* Fast Weiß */
+            --light-grey: #ECF0F1;
+            --focus-outline: 3px solid #F1C40F; /* Gelb für Fokus-Indikator */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Skip Link für Screenreader (Barrierefreiheit) */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a:focus {
+            background-color: var(--light-grey);
+            text-decoration: underline;
+        }
+
+        /* Fokus-Status für Tastaturbedienung (Wichtig für Barrierefreiheit!) */
+        *:focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: 2px;
+        }
+
+        /* Main Content Area */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            min-height: 60vh;
+        }
+
+        /* Sections (simulierte Seiten) */
+        .page-section {
+            display: none; /* Alle ausblenden */
+            animation: fadeIn 0.5s;
+        }
+        
+        .page-section.active {
+            display: block; /* Nur die aktive anzeigen */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Shop Grid */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: var(--light-grey);
+            border-radius: 8px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.2s;
+            background: white;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #1e8449;
+        }
+
+        /* Legal Text Styling */
+        .legal-text {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .legal-text h1 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
+        .legal-text h2 { margin-top: 2rem; color: #444; }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer a { color: #bdc3c7; }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+
+    <header>
+        <a href="#" onclick="showPage('home')" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c.6 0 1.2.5 1.7 1 .5.5 1 1.1 1.7 1.1s1.2-.6 1.7-1.1c.5-.5 1.1-1 1.7-1s1.2.5 1.7 1c.5.5 1 1.1 1.7 1.1s1.2-.6 1.7-1.1c.5-.5 1.1-1 1.7-1 1.4 0 2.5 1.1 2.5 2.5v15c0 1.4-1.1 2.5-2.5 2.5H6.5c-1.4 0-2.5-1.1-2.5-2.5v-15C4 3.1 5.1 2 6.5 2h5.5z"/></svg>
+            PixelPaws
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Shop</a></li>
+                <li><a href="#" onclick="showPage('lizenz')">Lizenz</a></li>
+                <li><a href="#" onclick="showPage('datenschutz')">Datenschutz</a></li>
+                <li><a href="#" onclick="showPage('impressum')">Kontakt/Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        
+        <div id="home" class="page-section active">
+            <div class="hero">
+                <h1>Print their joy.</h1>
+                <p>Lade dir exklusive 3D-Druckvorlagen für dein Haustier herunter.</p>
+            </div>
+
+            <div class="product-grid">
+                <article class="product-card">
+                    <img src="https://placehold.co/400x300/27ae60/white?text=Dog+Tag+STL" alt="3D-Rendering eines knochenförmigen Namensschilds">
+                    <h2>Custom Dog Tag v1</h2>
+                    <p>Personalisierbares Namensschild. STL-Format.</p>
+                    <p><strong>€ 4,99</strong></p>
+                    <button class="btn" onclick="addToCart('Dog Tag')">In den Warenkorb</button>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://placehold.co/400x300/2980b9/white?text=Cat+Feeder+STL" alt="3D-Rendering einer erhöhten Futterstation für Katzen">
+                    <h2>Ergonomischer Napfhalter</h2>
+                    <p>Schont den Rücken deiner Katze. Druckbar ohne Support.</p>
+                    <p><strong>€ 8,99</strong></p>
+                    <button class="btn" onclick="addToCart('Napfhalter')">In den Warenkorb</button>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://placehold.co/400x300/e67e22/white?text=Toy+Ball+STL" alt="Gitternetz-Ball Spielzeug Rendering">
+                    <h2>Unkaputtbar-Ball</h2>
+                    <p>Flexibles TPU empfohlen. Endloser Spaß.</p>
+                    <p><strong>€ 3,99</strong></p>
+                    <button class="btn" onclick="addToCart('Ball')">In den Warenkorb</button>
+                </article>
+            </div>
+        </div>
+
+        <div id="lizenz" class="page-section">
+            <div class="legal-text">
+                <h1>Endnutzer-Lizenzvereinbarung (EULA)</h1>
+                <p>Mit dem Kauf einer digitalen Datei bei PixelPaws erwerben Sie das Recht, diese wie folgt zu nutzen:</p>
+                
+                <h2>1. Nutzungsrechte</h2>
+                <p>Sie erhalten ein einfaches, nicht übertragbares Recht, die Datei für <strong>private Zwecke</strong> beliebig oft auf Ihrem 3D-Drucker auszudrucken.</p>
+                
+                <h2>2. Einschränkungen</h2>
+                <ul>
+                    <li>Der Weiterverkauf der digitalen Datei (STL/OBJ) ist strengstens untersagt.</li>
+                    <li>Der gewerbliche Verkauf der gedruckten physischen Objekte ist ohne Händler-Lizenz nicht gestattet.</li>
+                    <li>Das Urheberrecht am Design verbleibt bei der PixelPaws GmbH.</li>
+                </ul>
+
+                <h2>3. Haftung</h2>
+                <p>Die PixelPaws GmbH haftet nicht für Schäden am 3D-Drucker oder für Verletzungen, die durch unsachgemäße Nutzung der gedruckten Objekte entstehen (z.B. verschluckbare Kleinteile). Bitte beachten Sie die Sicherheitshinweise.</p>
+            </div>
+        </div>
+
+        <div id="datenschutz" class="page-section">
+            <div class="legal-text">
+                <h1>Datenschutzerklärung</h1>
+                <p>Verantwortlich: PixelPaws GmbH, Digitalstraße 10, 4020 Linz.</p>
+
+                <h2>Welche Daten wir verarbeiten</h2>
+                <p>Wir verarbeiten Bestandsdaten (Name, Adresse für Rechnung), Kontaktdaten (E-Mail für Download-Link) und Nutzungsdaten (IP-Adresse).</p>
+
+                <h2>Zweck der Verarbeitung</h2>
+                <p>Die Verarbeitung erfolgt zur Vertragserfüllung (Bereitstellung des Downloads) gemäß Art. 6 DSGVO.</p>
+
+                <h2>Ihre Rechte</h2>
+                <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer gespeicherten Daten. Wenden Sie sich dazu an privacy@pixelpaws.at.</p>
+
+                <h2>Cookies</h2>
+                <p>Wir verwenden technisch notwendige Cookies für den Warenkorb. Analyse-Cookies werden nur nach Ihrer aktiven Einwilligung gesetzt.</p>
+            </div>
+        </div>
+
+        <div id="impressum" class="page-section">
+            <div class="legal-text">
+                <h1>Kontakt & Impressum</h1>
+                
+                <div style="background: #f9f9f9; padding: 20px; border-left: 4px solid var(--accent-color);">
+                    <p><strong>PixelPaws GmbH</strong></p>
+                    <p>Digitalstraße 10<br>4020 Linz, Österreich</p>
+                    <p>📞 +43 732 123456<br>📧 office@pixelpaws.at</p>
+                </div>
+
+                <h2>Rechtliche Angaben</h2>
+                <ul>
+                    <li><strong>UID-Nummer:</strong> ATU99887766</li>
+                    <li><strong>Firmenbuchnummer:</strong> FN 554433x</li>
+                    <li><strong>Firmenbuchgericht:</strong> Landesgericht Linz</li>
+                    <li><strong>Aufsichtsbehörde:</strong> Magistrat der Stadt Linz</li>
+                    <li><strong>Mitgliedschaft:</strong> WKO Oberösterreich, Sparte Handel</li>
+                </ul>
+
+                <h2>Unternehmensgegenstand</h2>
+                <p>Handel mit Waren aller Art, insbesondere digitale Güter und 3D-Druck-Zubehör.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 PixelPaws GmbH | <a href="#" onclick="showPage('impressum')">Impressum</a> | <a href="#" onclick="showPage('datenschutz')">Datenschutz</a></p>
+        <p style="font-size: 0.8rem;">Wir verpflichten uns zur Barrierefreiheit (WCAG 2.2 AA). Probleme? Mail an help@pixelpaws.at</p>
+    </footer>
+
+    <script>
+        // --- JAVASCRIPT: MOCKING DER SEITEN ---
+        
+        // Einfache Funktion zum Umschalten der "Seiten"
+        function showPage(pageId) {
+            // 1. Alle Sections verstecken
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Die gewünschte Section anzeigen
+            const activeSection = document.getElementById(pageId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                
+                // Fokus setzen für Barrierefreiheit (damit Screenreader merken, dass sich was geändert hat)
+                activeSection.setAttribute('tabindex', '-1');
+                activeSection.focus();
+            }
+        }
+
+        // Mock-Funktion für den Warenkorb
+        function addToCart(productName) {
+            alert(productName + ' wurde in den Warenkorb gelegt! (Dies ist eine Demo)');
+        }
+    </script>
+
+</body>
+</html>
