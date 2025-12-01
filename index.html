@@ -8,16 +8,13 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* --- CSS: DESIGN & BARRIEREFREIHEIT --- */
-        
+    <style>        
         :root {
-            /* Farbpalette (WCAG AA Konform) */
-            --primary-color: #2C3E50; /* Dunkelblau (Text) */
-            --accent-color: #27AE60; /* Grün (Buttons/Links) */
-            --bg-color: #FDFDFD; /* Fast Weiß */
+            --primary-color: #2C3E50;
+            --accent-color: #27AE60; 
+            --bg-color: #FDFDFD; 
             --light-grey: #ECF0F1;
-            --focus-outline: 3px solid #F1C40F; /* Gelb für Fokus-Indikator */
+            --focus-outline: 3px solid #F1C40F; 
         }
 
         * {
@@ -33,7 +30,6 @@
             line-height: 1.6;
         }
 
-        /* Skip Link für Screenreader (Barrierefreiheit) */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -48,7 +44,6 @@
             top: 0;
         }
 
-        /* Header & Navigation */
         header {
             background-color: white;
             border-bottom: 1px solid #ddd;
@@ -90,13 +85,11 @@
             text-decoration: underline;
         }
 
-        /* Fokus-Status für Tastaturbedienung (Wichtig für Barrierefreiheit!) */
         *:focus-visible {
             outline: var(--focus-outline);
             outline-offset: 2px;
         }
 
-        /* Main Content Area */
         main {
             max-width: 1200px;
             margin: 2rem auto;
@@ -104,14 +97,13 @@
             min-height: 60vh;
         }
 
-        /* Sections (simulierte Seiten) */
         .page-section {
-            display: none; /* Alle ausblenden */
+            display: none; 
             animation: fadeIn 0.5s;
         }
         
         .page-section.active {
-            display: block; /* Nur die aktive anzeigen */
+            display: block;
         }
 
         @keyframes fadeIn {
@@ -119,7 +111,6 @@
             to { opacity: 1; }
         }
 
-        /* Shop Grid */
         .hero {
             text-align: center;
             margin-bottom: 3rem;
@@ -173,7 +164,6 @@
             background-color: #1e8449;
         }
 
-        /* Legal Text Styling */
         .legal-text {
             max-width: 800px;
             margin: 0 auto;
@@ -182,7 +172,6 @@
         .legal-text h1 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
         .legal-text h2 { margin-top: 2rem; color: #444; }
 
-        /* Footer */
         footer {
             background-color: var(--primary-color);
             color: white;
@@ -319,32 +308,26 @@
     </footer>
 
     <script>
-        // --- JAVASCRIPT: MOCKING DER SEITEN ---
-        
-        // Einfache Funktion zum Umschalten der "Seiten"
         function showPage(pageId) {
-            // 1. Alle Sections verstecken
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(section => {
                 section.classList.remove('active');
             });
 
-            // 2. Die gewünschte Section anzeigen
             const activeSection = document.getElementById(pageId);
             if (activeSection) {
                 activeSection.classList.add('active');
                 
-                // Fokus setzen für Barrierefreiheit (damit Screenreader merken, dass sich was geändert hat)
                 activeSection.setAttribute('tabindex', '-1');
                 activeSection.focus();
             }
         }
 
-        // Mock-Funktion für den Warenkorb
         function addToCart(productName) {
             alert(productName + ' wurde in den Warenkorb gelegt! (Dies ist eine Demo)');
         }
     </script>
 
 </body>
+
 </html>
